@@ -1,1 +1,1266 @@
-# sheriselph-design.github.io
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sheri Flournoy Selph</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@300;400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:       #1e1e1c;
+  --bg2:      #252523;
+  --bg3:      #2c2c29;
+  --bg4:      #323230;
+  --cream:    #f0e8d8;
+  --cream2:   #d8cdb8;
+  --cream3:   #a89880;
+  --cream4:   #6a5e4e;
+  --moss:     #4a5240;
+  --moss2:    #3a4232;
+  --sage:     #7a8a6a;
+  --sage2:    #9aaa88;
+  --petal:    #c8a878;
+  --petal2:   #e0c898;
+  --petal3:   rgba(200,168,120,0.15);
+  --border:   rgba(240,232,216,0.08);
+  --border2:  rgba(240,232,216,0.15);
+  --serif:    'Playfair Display', Georgia, serif;
+  --sans:     'DM Sans', sans-serif;
+  --mono:     'DM Mono', monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--cream);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.7;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* CUSTOM CURSOR */
+#cursor {
+  position: fixed;
+  width: 8px; height: 8px;
+  background: var(--petal);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%,-50%);
+  transition: width 0.2s, height 0.2s, background 0.2s;
+  mix-blend-mode: screen;
+}
+#cursor-ring {
+  position: fixed;
+  width: 28px; height: 28px;
+  border: 1px solid rgba(200,168,120,0.5);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%,-50%);
+  transition: all 0.12s ease;
+}
+body:hover #cursor { opacity: 1; }
+
+/* BOTANICAL SVG OVERLAY — decorative fixed layer */
+#botanical-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.04;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.6rem 3rem;
+  background: linear-gradient(to bottom, rgba(30,30,28,0.97) 60%, transparent);
+}
+
+.nav-logo {
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--petal);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  cursor: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-links a {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cream3);
+  text-decoration: none;
+  transition: color 0.3s;
+  cursor: none;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px; left: 0;
+  width: 0; height: 1px;
+  background: var(--petal);
+  transition: width 0.3s;
+}
+.nav-links a:hover { color: var(--cream); }
+.nav-links a:hover::after { width: 100%; }
+
+/* PAGES */
+.page { display: none; position: relative; z-index: 1; animation: revealPage 0.7s ease forwards; }
+.page.active { display: block; }
+
+@keyframes revealPage {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ===========================
+   BIO PAGE
+=========================== */
+.bio-hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  position: relative;
+  overflow: hidden;
+}
+
+.bio-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 9rem 3rem 5rem 3.5rem;
+  position: relative;
+}
+
+/* Decorative botanical line */
+.bio-left::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 20%; bottom: 20%;
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, var(--petal3), transparent);
+}
+
+.bio-eyebrow {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--sage2);
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.bio-eyebrow::before {
+  content: '✦';
+  font-size: 0.5rem;
+  color: var(--petal);
+}
+
+.bio-name {
+  font-family: var(--serif);
+  font-size: clamp(2.8rem, 4.5vw, 5rem);
+  font-weight: 400;
+  line-height: 1.05;
+  color: var(--cream);
+  margin-bottom: 0.3rem;
+}
+.bio-name-second {
+  font-family: var(--serif);
+  font-size: clamp(2.8rem, 4.8vw, 5.2rem);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--petal2);
+  margin-bottom: 0;
+  display: block;
+  line-height: 1;
+}
+.bio-name-last {
+  font-family: var(--serif);
+  font-size: clamp(2.8rem, 4.8vw, 5.2rem);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--petal2);
+  display: block;
+  margin-top: -0.05em;
+  margin-bottom: 2.5rem;
+  line-height: 1;
+}
+
+.bio-tagline {
+  font-family: var(--sans);
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--cream3);
+  line-height: 1.85;
+  max-width: 440px;
+  margin-bottom: 3rem;
+  border-left: 1px solid var(--border2);
+  padding-left: 1.5rem;
+}
+
+.bio-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--bg);
+  background: var(--petal);
+  border: 1px solid var(--petal);
+  padding: 0.85rem 1.8rem;
+  cursor: none;
+  transition: all 0.3s;
+}
+.btn-primary:hover { background: var(--petal2); border-color: var(--petal2); }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--cream3);
+  background: transparent;
+  border: 1px solid var(--border2);
+  padding: 0.85rem 1.8rem;
+  cursor: none;
+  transition: all 0.3s;
+}
+.btn-secondary:hover { color: var(--cream); border-color: var(--cream3); }
+
+/* RIGHT PANEL — botanical illustration */
+.bio-right {
+  position: relative;
+  background: var(--bg2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.bio-right canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.bio-portrait-text {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 2rem;
+}
+.bio-portrait-text p {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--cream4);
+}
+
+/* ABOUT SECTION */
+.bio-about {
+  padding: 7rem 3.5rem;
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 5rem;
+  max-width: 1100px;
+  border-top: 1px solid var(--border);
+}
+
+.section-label {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--sage2);
+  padding-top: 0.3rem;
+}
+
+.about-body {
+  font-family: var(--sans);
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--cream2);
+  line-height: 1.9;
+}
+.about-body p + p { margin-top: 1.4rem; }
+.about-body strong { color: var(--cream); font-weight: 400; }
+
+/* SKILLS STRIP */
+.skills-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--border);
+}
+.skill-cell {
+  padding: 2.2rem 2rem;
+  border-right: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.skill-cell:last-child { border-right: none; }
+.skill-cell::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--petal3), transparent);
+}
+.skill-name {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  color: var(--cream);
+  margin-bottom: 0.4rem;
+}
+.skill-sub {
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  color: var(--cream4);
+}
+
+/* ===========================
+   PORTFOLIO PAGE
+=========================== */
+.portfolio-wrap {
+  padding: 9rem 3.5rem 7rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.page-header {
+  margin-bottom: 5rem;
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 4rem;
+  align-items: end;
+}
+.page-title {
+  font-family: var(--serif);
+  font-size: clamp(2.5rem, 4vw, 4.2rem);
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--cream);
+}
+.page-title em { font-style: italic; color: var(--petal2); }
+.page-intro {
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--cream3);
+  line-height: 1.8;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5px;
+  background: var(--border);
+}
+.project-card {
+  background: var(--bg);
+  overflow: hidden;
+  cursor: none;
+  transition: background 0.35s;
+  position: relative;
+}
+.project-card:hover { background: var(--bg2); }
+
+.project-thumb {
+  height: 210px;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg3);
+}
+.project-thumb canvas { width: 100%; height: 100%; display: block; }
+.project-num {
+  position: absolute;
+  top: 1rem; right: 1rem;
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  color: var(--cream4);
+  letter-spacing: 0.15em;
+}
+
+.project-body { padding: 1.5rem 1.5rem 1rem; border-top: 1px solid var(--border); }
+.project-tag {
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sage2);
+  margin-bottom: 0.5rem;
+}
+.project-title {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: var(--cream);
+  margin-bottom: 0.6rem;
+  line-height: 1.3;
+}
+.project-desc {
+  font-size: 0.82rem;
+  font-weight: 300;
+  color: var(--cream3);
+  line-height: 1.7;
+}
+.project-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.9rem 1.5rem;
+  border-top: 1px solid var(--border);
+}
+.project-year { font-family: var(--mono); font-size: 0.58rem; color: var(--cream4); }
+.project-arrow { color: var(--petal); font-size: 0.9rem; transition: transform 0.3s; }
+.project-card:hover .project-arrow { transform: translateX(5px); }
+
+/* ===========================
+   BLOG PAGE
+=========================== */
+.blog-wrap {
+  padding: 9rem 3.5rem 7rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.newsletter-block {
+  background: var(--bg2);
+  border: 1px solid var(--border2);
+  padding: 4rem 4rem 3.5rem;
+  margin-bottom: 5rem;
+  position: relative;
+  overflow: hidden;
+}
+/* Floral corner accent (CSS only) */
+.newsletter-block::before {
+  content: '❧';
+  position: absolute;
+  right: 3rem; bottom: 2rem;
+  font-size: 5rem;
+  color: var(--border);
+  transform: rotate(-15deg);
+  pointer-events: none;
+}
+.newsletter-block::after {
+  content: '❧';
+  position: absolute;
+  left: 2rem; top: 2rem;
+  font-size: 2.5rem;
+  color: var(--border);
+  transform: rotate(170deg) scaleX(-1);
+  pointer-events: none;
+}
+
+.nl-eyebrow {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--sage2);
+  margin-bottom: 1rem;
+}
+.nl-title {
+  font-family: var(--serif);
+  font-size: 2.4rem;
+  font-weight: 400;
+  color: var(--cream);
+  margin-bottom: 0.8rem;
+  line-height: 1.2;
+}
+.nl-title em { font-style: italic; color: var(--petal2); }
+.nl-desc {
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: var(--cream3);
+  max-width: 500px;
+  margin-bottom: 2rem;
+  line-height: 1.8;
+}
+.nl-form { display: flex; max-width: 460px; }
+.nl-input {
+  flex: 1;
+  background: var(--bg);
+  border: 1px solid var(--border2);
+  border-right: none;
+  color: var(--cream);
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  padding: 0.85rem 1.2rem;
+  outline: none;
+  letter-spacing: 0.05em;
+  transition: border-color 0.3s;
+}
+.nl-input:focus { border-color: var(--petal); }
+.nl-input::placeholder { color: var(--cream4); }
+.nl-btn {
+  background: var(--petal);
+  border: 1px solid var(--petal);
+  color: var(--bg);
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.85rem 1.5rem;
+  cursor: none;
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+.nl-btn:hover { background: var(--petal2); border-color: var(--petal2); }
+.nl-note {
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  color: var(--cream4);
+  margin-top: 0.8rem;
+  letter-spacing: 0.1em;
+}
+
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5px;
+  background: var(--border);
+}
+.post-card {
+  background: var(--bg);
+  padding: 2rem;
+  cursor: none;
+  transition: background 0.3s;
+  position: relative;
+}
+.post-card:hover { background: var(--bg2); }
+.post-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(to right, transparent, var(--petal3), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.post-card:hover::before { opacity: 1; }
+.post-date { font-family: var(--mono); font-size: 0.58rem; color: var(--cream4); letter-spacing: 0.12em; margin-bottom: 1rem; }
+.post-title { font-family: var(--serif); font-size: 1.2rem; font-weight: 400; line-height: 1.35; color: var(--cream); margin-bottom: 0.7rem; }
+.post-excerpt { font-size: 0.83rem; font-weight: 300; color: var(--cream3); line-height: 1.75; margin-bottom: 1.5rem; }
+.post-read { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--petal); }
+
+/* ===========================
+   MOTION PAGE
+=========================== */
+.motion-wrap {
+  padding: 9rem 3.5rem 7rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.motion-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5px;
+  background: var(--border);
+}
+.motion-card { background: var(--bg); overflow: hidden; }
+.motion-canvas-wrap { width: 100%; height: 380px; overflow: hidden; position: relative; }
+.motion-canvas-wrap canvas { width: 100%; height: 100%; display: block; }
+.motion-label {
+  padding: 1.4rem 2rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.motion-title { font-family: var(--serif); font-size: 1rem; color: var(--cream); }
+.motion-meta { font-family: var(--mono); font-size: 0.58rem; color: var(--cream4); letter-spacing: 0.12em; }
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 2.5rem 3.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.footer-name { font-family: var(--serif); font-style: italic; font-size: 0.95rem; color: var(--petal); }
+.footer-copy { font-family: var(--mono); font-size: 0.58rem; color: var(--cream4); letter-spacing: 0.12em; }
+.footer-links { display: flex; gap: 2rem; }
+.footer-links a { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.12em; color: var(--cream4); text-decoration: none; cursor: none; transition: color 0.3s; }
+.footer-links a:hover { color: var(--petal); }
+</style>
+</head>
+<body>
+
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<!-- Fixed botanical background texture -->
+<svg id="botanical-bg" viewBox="0 0 1440 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+  <!-- Large stem left -->
+  <path d="M80,900 Q100,600 60,400 Q40,250 120,100" stroke="#f0e8d8" stroke-width="1" fill="none"/>
+  <path d="M60,400 Q10,350 30,280" stroke="#f0e8d8" stroke-width="0.7" fill="none"/>
+  <path d="M80,600 Q20,560 50,480" stroke="#f0e8d8" stroke-width="0.7" fill="none"/>
+  <!-- Leaf clusters left -->
+  <ellipse cx="30" cy="275" rx="28" ry="12" transform="rotate(-30 30 275)" fill="#f0e8d8"/>
+  <ellipse cx="48" cy="478" rx="24" ry="10" transform="rotate(20 48 478)" fill="#f0e8d8"/>
+  <!-- Large stem right -->
+  <path d="M1360,900 Q1340,650 1380,420 Q1400,260 1320,80" stroke="#f0e8d8" stroke-width="1" fill="none"/>
+  <path d="M1380,420 Q1430,370 1410,290" stroke="#f0e8d8" stroke-width="0.7" fill="none"/>
+  <path d="M1360,630 Q1420,590 1395,510" stroke="#f0e8d8" stroke-width="0.7" fill="none"/>
+  <ellipse cx="1412" cy="285" rx="28" ry="12" transform="rotate(35 1412 285)" fill="#f0e8d8"/>
+  <ellipse cx="1395" cy="508" rx="24" ry="10" transform="rotate(-25 1395 508)" fill="#f0e8d8"/>
+  <!-- Top center florals -->
+  <circle cx="720" cy="30" r="4" fill="#f0e8d8"/>
+  <path d="M720,30 Q700,20 690,5" stroke="#f0e8d8" stroke-width="0.7" fill="none"/>
+  <path d="M720,30 Q740,20 750,5" stroke="#f0e8d8" stroke-width="0.7" fill="none"/>
+  <path d="M720,30 Q712,15 720,0" stroke="#f0e8d8" stroke-width="0.7" fill="none"/>
+  <path d="M720,30 Q728,15 720,0" stroke="#f0e8d8" stroke-width="0.5" fill="none"/>
+</svg>
+
+<nav>
+  <a class="nav-logo" onclick="showPage('bio')">Sheri Flournoy Selph</a>
+  <ul class="nav-links">
+    <li><a onclick="showPage('bio')">Bio</a></li>
+    <li><a onclick="showPage('portfolio')">Work</a></li>
+    <li><a onclick="showPage('blog')">Writing</a></li>
+    <li><a onclick="showPage('motion')">Motion</a></li>
+  </ul>
+</nav>
+
+<!-- ═══ BIO PAGE ═══ -->
+<section id="bio" class="page active">
+  <div class="bio-hero">
+    <div class="bio-left">
+      <p class="bio-eyebrow">Available for projects · 2025</p>
+      <h1 class="bio-name">
+        Sheri
+        <em class="bio-name-second">Flournoy</em>
+        <span class="bio-name-last">Selph</span>
+      </h1>
+      <p class="bio-tagline">
+        Replace this with your tagline — a sentence or two about what you do, who you do it for, and the spirit you bring to the work.
+      </p>
+      <div class="bio-actions">
+        <button class="btn-primary" onclick="showPage('portfolio')">View my work →</button>
+        <button class="btn-secondary" onclick="showPage('blog')">Read the newsletter</button>
+      </div>
+    </div>
+    <div class="bio-right">
+      <canvas id="bio-canvas"></canvas>
+      <img src="data:image/jpeg;base64,PORTRAIT_B64" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;z-index:1;" alt="Sheri Flournoy Selph">
+    </div>
+  </div>
+
+  <div class="bio-about">
+    <div>
+      <p class="section-label">About</p>
+    </div>
+    <div class="about-body">
+      <p>Replace this with your story. Tell the reader who you are, what you care about, and how you found your way to the work you do now. This is your moment to be fully human — skip the jargon.</p>
+      <p>Talk about your process, your obsessions, the kinds of problems that light you up. What do you believe about your craft? What are you trying to <strong>build or express</strong> through your work?</p>
+      <p>Where are you based? What are you working on right now? Give people something real to hold onto — a reason to reach out.</p>
+    </div>
+  </div>
+
+  <div class="skills-strip">
+    <div class="skill-cell"><div class="skill-name">Discipline One</div><div class="skill-sub">Skill · Skill · Skill</div></div>
+    <div class="skill-cell"><div class="skill-name">Discipline Two</div><div class="skill-sub">Skill · Skill · Skill</div></div>
+    <div class="skill-cell"><div class="skill-name">Discipline Three</div><div class="skill-sub">Skill · Skill · Skill</div></div>
+    <div class="skill-cell"><div class="skill-name">Discipline Four</div><div class="skill-sub">Skill · Skill · Skill</div></div>
+  </div>
+</section>
+
+<!-- ═══ PORTFOLIO PAGE ═══ -->
+<section id="portfolio" class="page">
+  <div class="portfolio-wrap">
+    <div class="page-header">
+      <h2 class="page-title">Selected<br><em>work & projects</em></h2>
+      <p class="page-intro">Six projects that best represent the range, depth, and intention behind the work. Replace titles, descriptions, and tags to make these your own.</p>
+    </div>
+    <div class="projects-grid" id="projects-grid"></div>
+  </div>
+</section>
+
+<!-- ═══ BLOG PAGE ═══ -->
+<section id="blog" class="page">
+  <div class="blog-wrap">
+    <div class="page-header">
+      <h2 class="page-title">Writing &amp;<br><em>the newsletter</em></h2>
+      <p class="page-intro">Ideas, process notes, and essays sent monthly. A space to think without the algorithm.</p>
+    </div>
+    <div class="newsletter-block">
+      <p class="nl-eyebrow">Monthly dispatch</p>
+      <h3 class="nl-title">Join the <em>letter</em></h3>
+      <p class="nl-desc">Once a month: a personal dispatch on craft, process, and the ideas shaping how I work. No noise. Just honest writing.</p>
+      <div class="nl-form">
+        <input id="nl-email" class="nl-input" type="email" placeholder="your@email.com">
+        <button class="nl-btn" onclick="subscribe()">Subscribe</button>
+      </div>
+      <p class="nl-note" id="nl-msg">No spam. Unsubscribe anytime.</p>
+    </div>
+    <div class="posts-grid" id="posts-grid"></div>
+  </div>
+</section>
+
+<!-- ═══ MOTION PAGE ═══ -->
+<section id="motion" class="page">
+  <div class="motion-wrap">
+    <div class="page-header">
+      <h2 class="page-title">Experimental<br><em>motion studies</em></h2>
+      <p class="page-intro">Four coded pieces exploring the boundary between the digital and the organic — systems that breathe, grow, and respond.</p>
+    </div>
+    <div class="motion-grid">
+      <div class="motion-card">
+        <div class="motion-canvas-wrap"><canvas id="m1"></canvas></div>
+        <div class="motion-label"><span class="motion-title">Botanical Growth</span><span class="motion-meta">01 — generative</span></div>
+      </div>
+      <div class="motion-card">
+        <div class="motion-canvas-wrap"><canvas id="m2"></canvas></div>
+        <div class="motion-label"><span class="motion-title">Petal Diffusion</span><span class="motion-meta">02 — reaction–diffusion</span></div>
+      </div>
+      <div class="motion-card">
+        <div class="motion-canvas-wrap"><canvas id="m3"></canvas></div>
+        <div class="motion-label"><span class="motion-title">Mycelium Network</span><span class="motion-meta">03 — particle graph</span></div>
+      </div>
+      <div class="motion-card">
+        <div class="motion-canvas-wrap"><canvas id="m4"></canvas></div>
+        <div class="motion-label"><span class="motion-title">Cellular Membrane</span><span class="motion-meta">04 — voronoi flow</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-name">Sheri Flournoy Selph</span>
+  <span class="footer-copy">© 2025 — All rights reserved</span>
+  <div class="footer-links">
+    <a href="#">Instagram</a>
+    <a href="#">LinkedIn</a>
+    <a href="#">Twitter</a>
+    <a href="#">Email</a>
+  </div>
+</footer>
+
+<script>
+/* ─── CURSOR ─── */
+const cur = document.getElementById('cursor');
+const ring = document.getElementById('cursor-ring');
+document.addEventListener('mousemove', e => {
+  cur.style.left = e.clientX + 'px';
+  cur.style.top = e.clientY + 'px';
+  ring.style.left = e.clientX + 'px';
+  ring.style.top = e.clientY + 'px';
+});
+
+/* ─── NAV ─── */
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+  if (id === 'motion') setTimeout(initMotion, 120);
+  if (id === 'portfolio') setTimeout(initThumbs, 120);
+}
+
+/* ─── BIO CANVAS — organic botanical background ─── */
+(function() {
+  const canvas = document.getElementById('bio-canvas');
+  if (!canvas) return;
+  function resize() {
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+  }
+  resize();
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+
+  // Gentle bokeh-like floating orbs with organic feel
+  const orbs = Array.from({length: 18}, () => ({
+    x: Math.random()*W, y: Math.random()*H,
+    r: 30 + Math.random()*80,
+    speed: 0.0003 + Math.random()*0.0006,
+    phase: Math.random()*Math.PI*2,
+    hue: 28 + Math.random()*20,
+    sat: 30 + Math.random()*20,
+    lit: 30 + Math.random()*20,
+  }));
+
+  // Vine paths
+  const vines = Array.from({length: 5}, (_, i) => ({
+    sx: Math.random()*W,
+    sy: H + 20,
+    pts: [],
+    len: 0,
+    maxLen: 200 + Math.random()*300,
+    angle: -Math.PI/2 + (Math.random()-0.5)*0.8,
+    speed: 0.5 + Math.random()*0.5,
+  }));
+  vines.forEach(v => {
+    let x = v.sx, y = v.sy;
+    for (let i = 0; i < 80; i++) {
+      v.angle += (Math.random()-0.5)*0.15;
+      x += Math.cos(v.angle)*4;
+      y += Math.sin(v.angle)*4;
+      v.pts.push({x, y});
+    }
+  });
+
+  let t = 0;
+  let frame = 0;
+  function draw() {
+    ctx.fillStyle = '#252523';
+    ctx.fillRect(0,0,W,H);
+
+    // orbs
+    orbs.forEach(o => {
+      const nx = o.x + Math.sin(t*o.speed + o.phase)*30;
+      const ny = o.y + Math.cos(t*o.speed*0.7 + o.phase)*20;
+      const grd = ctx.createRadialGradient(nx, ny, 0, nx, ny, o.r);
+      grd.addColorStop(0, `hsla(${o.hue},${o.sat}%,${o.lit}%,0.12)`);
+      grd.addColorStop(1, 'transparent');
+      ctx.fillStyle = grd;
+      ctx.beginPath();
+      ctx.arc(nx, ny, o.r, 0, Math.PI*2);
+      ctx.fill();
+    });
+
+    // vines
+    vines.forEach(v => {
+      const visible = Math.min(v.pts.length, Math.floor(frame * v.speed));
+      if (visible < 2) return;
+      ctx.beginPath();
+      ctx.moveTo(v.pts[0].x, v.pts[0].y);
+      for (let i = 1; i < visible; i++) ctx.lineTo(v.pts[i].x, v.pts[i].y);
+      ctx.strokeStyle = 'rgba(122,138,106,0.25)';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+      // tiny leaves at intervals
+      for (let i = 8; i < visible; i += 12) {
+        const p = v.pts[i];
+        const ang = Math.atan2(v.pts[i].y - v.pts[i-1].y, v.pts[i].x - v.pts[i-1].x);
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(ang + Math.PI/2.5);
+        ctx.beginPath();
+        ctx.ellipse(0, 0, 5, 12, 0, 0, Math.PI*2);
+        ctx.fillStyle = 'rgba(90,110,75,0.3)';
+        ctx.fill();
+        ctx.restore();
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(ang - Math.PI/2.5);
+        ctx.beginPath();
+        ctx.ellipse(0, 0, 5, 12, 0, 0, Math.PI*2);
+        ctx.fillStyle = 'rgba(90,110,75,0.3)';
+        ctx.fill();
+        ctx.restore();
+      }
+    });
+
+    t += 1;
+    frame++;
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ─── PROJECTS ─── */
+const projects = [
+  { title: 'Project Title One',   tag: 'Branding',      year: '2024', desc: 'A short, compelling description of this project — what it was, what you made, and why it mattered.', c1: '#1c1a14', c2: '#7a6a3a' },
+  { title: 'Project Title Two',   tag: 'Motion Design', year: '2024', desc: 'Describe the work here. Keep it honest and specific — what was the brief, what was the solution?', c1: '#141c14', c2: '#4a6a3a' },
+  { title: 'Project Title Three', tag: 'Editorial',     year: '2023', desc: 'A few lines about this project. You can mention the client, the medium, or what made this one interesting.', c1: '#1c1414', c2: '#7a3a3a' },
+  { title: 'Project Title Four',  tag: 'Installation',  year: '2023', desc: 'What was this project exploring? Who was the audience? What did it feel like to complete it?', c1: '#14181c', c2: '#3a5a7a' },
+  { title: 'Project Title Five',  tag: 'UX / Product',  year: '2022', desc: 'Describe what problem this solved, what tools or process you used, and what the outcome was.', c1: '#1a141c', c2: '#5a3a7a' },
+  { title: 'Project Title Six',   tag: 'Photography',   year: '2022', desc: 'A closing note about this project — anything that gives it texture and makes it feel lived-in.', c1: '#1a1c14', c2: '#6a7a3a' },
+];
+
+function buildProjects() {
+  const grid = document.getElementById('projects-grid');
+  if (!grid || grid.children.length) return;
+  projects.forEach((p, i) => {
+    grid.innerHTML += `
+    <div class="project-card">
+      <div class="project-thumb">
+        <canvas data-bg="${p.c1}" data-fg="${p.c2}" data-i="${i}"></canvas>
+        <span class="project-num">0${i+1}</span>
+      </div>
+      <div class="project-body">
+        <p class="project-tag">${p.tag}</p>
+        <h3 class="project-title">${p.title}</h3>
+        <p class="project-desc">${p.desc}</p>
+      </div>
+      <div class="project-foot">
+        <span class="project-year">${p.year}</span>
+        <span class="project-arrow">→</span>
+      </div>
+    </div>`;
+  });
+}
+
+function initThumbs() {
+  buildProjects();
+  document.querySelectorAll('.project-thumb canvas').forEach(canvas => {
+    if (canvas._init) return;
+    canvas._init = true;
+    canvas.width = canvas.parentElement.offsetWidth || 340;
+    canvas.height = canvas.parentElement.offsetHeight || 210;
+    const W = canvas.width, H = canvas.height;
+    const ctx = canvas.getContext('2d');
+    const bg = canvas.dataset.bg;
+    const fg = canvas.dataset.fg;
+    // Organic particle system for thumbnails
+    const pts = Array.from({length: 40}, () => ({
+      x: Math.random()*W, y: Math.random()*H,
+      vx: (Math.random()-0.5)*0.5, vy: (Math.random()-0.5)*0.5
+    }));
+    function animate() {
+      ctx.fillStyle = bg + 'cc';
+      ctx.fillRect(0,0,W,H);
+      pts.forEach(p => {
+        p.x += p.vx; p.y += p.vy;
+        if (p.x<0||p.x>W) p.vx*=-1;
+        if (p.y<0||p.y>H) p.vy*=-1;
+      });
+      ctx.strokeStyle = fg + '44';
+      ctx.lineWidth = 0.6;
+      pts.forEach((a,i) => pts.slice(i+1).forEach(b => {
+        const d = Math.hypot(a.x-b.x, a.y-b.y);
+        if (d < 70) {
+          ctx.globalAlpha = (1-d/70)*0.5;
+          ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();
+        }
+      }));
+      ctx.globalAlpha = 1;
+      pts.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 1.2, 0, Math.PI*2);
+        ctx.fillStyle = fg;
+        ctx.fill();
+      });
+      requestAnimationFrame(animate);
+    }
+    animate();
+  });
+}
+
+/* ─── BLOG ─── */
+const posts = [
+  { date: 'Nov 12, 2025', title: 'On making things that last',         excerpt: 'We live in an era of relentless output. Everything is fast and disposable. What does it mean to make something slow, something rooted?' },
+  { date: 'Oct 01, 2025', title: 'The practitioner who refuses to specialize', excerpt: 'Everyone says pick a lane. I\'ve spent years ignoring that advice. Here\'s what I\'ve learned about working across disciplines without losing your edge.' },
+  { date: 'Sep 14, 2025', title: 'Three ideas that changed how I work', excerpt: 'Not software. Not frameworks. Three ideas — borrowed from other fields — that restructured everything about how I approach a brief.' },
+  { date: 'Aug 03, 2025', title: 'Why I deleted my portfolio twice',   excerpt: 'The best thing I ever did for my practice was start from zero. Twice. The uncomfortable truth about curation and the work we\'re afraid to delete.' },
+  { date: 'Jul 20, 2025', title: 'Notes on attention and deep work',   excerpt: 'Deep work isn\'t about time management. It\'s about learning to be a particular kind of present, in a particular room, at a particular hour.' },
+  { date: 'Jun 08, 2025', title: 'The aesthetics of restraint',        excerpt: 'Less isn\'t more — less is harder. A meditation on subtraction, silence, and the terrifying discipline of knowing when to stop.' },
+];
+
+(function buildBlog() {
+  const grid = document.getElementById('posts-grid');
+  if (!grid) return;
+  posts.forEach(p => {
+    grid.innerHTML += `
+    <div class="post-card">
+      <p class="post-date">${p.date}</p>
+      <h3 class="post-title">${p.title}</h3>
+      <p class="post-excerpt">${p.excerpt}</p>
+      <span class="post-read">Read →</span>
+    </div>`;
+  });
+})();
+
+function subscribe() {
+  const v = document.getElementById('nl-email').value;
+  const msg = document.getElementById('nl-msg');
+  if (!v.includes('@')) { msg.textContent = 'Please enter a valid email.'; msg.style.color = '#c87a5a'; return; }
+  msg.textContent = `You're in. Welcome, ${v}.`;
+  msg.style.color = '#c8a878';
+  document.getElementById('nl-email').value = '';
+}
+
+/* ─── MOTION ─── */
+let motionDone = false;
+function initMotion() {
+  if (motionDone) return;
+  motionDone = true;
+  m1_botanical();
+  m2_petal();
+  m3_mycelium();
+  m4_voronoi();
+}
+
+/* M1 — BOTANICAL GROWTH: L-system inspired recursive branching */
+function m1_botanical() {
+  const canvas = document.getElementById('m1'); if (!canvas) return;
+  const W = canvas.width = canvas.parentElement.offsetWidth || 680;
+  const H = canvas.height = canvas.parentElement.offsetHeight || 380;
+  const ctx = canvas.getContext('2d');
+  let t = 0;
+  function branch(x, y, angle, len, depth) {
+    if (depth === 0 || len < 1.5) return;
+    const ex = x + Math.cos(angle)*len;
+    const ey = y + Math.sin(angle)*len;
+    ctx.beginPath(); ctx.moveTo(x,y); ctx.lineTo(ex,ey);
+    const a = depth/9;
+    ctx.strokeStyle = `rgba(154,170,136,${a*0.7})`;
+    ctx.lineWidth = depth * 0.45;
+    ctx.stroke();
+    // small leaves at tips
+    if (depth <= 2) {
+      ctx.save();
+      ctx.translate(ex, ey);
+      ctx.rotate(angle);
+      ctx.beginPath();
+      ctx.ellipse(0, -5, 4, 10, 0, 0, Math.PI*2);
+      ctx.fillStyle = `rgba(90,120,75,${a*0.5})`;
+      ctx.fill();
+      ctx.restore();
+    }
+    const sway = Math.sin(t*0.4 + depth*0.5) * 0.1;
+    const spread = 0.45 + sway;
+    branch(ex, ey, angle - spread, len*0.67, depth-1);
+    branch(ex, ey, angle + spread, len*0.67, depth-1);
+    if (depth > 5) branch(ex, ey, angle + (Math.random()-0.5)*0.3, len*0.55, depth-3);
+  }
+  function draw() {
+    ctx.fillStyle = 'rgba(30,30,28,0.22)';
+    ctx.fillRect(0,0,W,H);
+    ctx.lineCap = 'round';
+    branch(W/2, H, -Math.PI/2 + Math.sin(t*0.15)*0.06, 65 + Math.sin(t*0.2)*6, 9);
+    // side growths
+    ctx.globalAlpha = 0.5;
+    branch(W*0.25, H, -Math.PI/2 + 0.25 + Math.sin(t*0.1)*0.08, 42, 7);
+    branch(W*0.75, H, -Math.PI/2 - 0.25 + Math.sin(t*0.1+1)*0.08, 42, 7);
+    ctx.globalAlpha = 1;
+    t += 0.01;
+    requestAnimationFrame(draw);
+  }
+  draw();
+}
+
+/* M2 — PETAL DIFFUSION: reaction-diffusion Gray-Scott */
+function m2_petal() {
+  const canvas = document.getElementById('m2'); if (!canvas) return;
+  const W = canvas.width  = Math.floor((canvas.parentElement.offsetWidth  || 680) / 2);
+  const H = canvas.height = Math.floor((canvas.parentElement.offsetHeight || 380) / 2);
+  canvas.style.imageRendering = 'pixelated';
+  const ctx = canvas.getContext('2d');
+  const N = W * H;
+  let A = new Float32Array(N).fill(1);
+  let B = new Float32Array(N).fill(0);
+  let nA = new Float32Array(N);
+  let nB = new Float32Array(N);
+  const f = 0.0545, k = 0.062, Da = 1.0, Db = 0.5;
+  // seed multiple points
+  [[W/2,H/2],[W/4,H/4],[W*3/4,H/4],[W/2,H*3/4]].forEach(([cx,cy]) => {
+    for (let dy=-4; dy<=4; dy++) for (let dx=-4; dx<=4; dx++) {
+      const idx = (Math.floor(cy+dy)*W + Math.floor(cx+dx));
+      if (idx>=0 && idx<N) B[idx] = 1;
+    }
+  });
+
+  const img = ctx.createImageData(W, H);
+  let step = 0;
+
+  function tick() {
+    for (let s = 0; s < 6; s++) {
+      for (let y=1; y<H-1; y++) for (let x=1; x<W-1; x++) {
+        const i = y*W+x;
+        const lapA = A[i-1]+A[i+1]+A[(y-1)*W+x]+A[(y+1)*W+x] - 4*A[i];
+        const lapB = B[i-1]+B[i+1]+B[(y-1)*W+x]+B[(y+1)*W+x] - 4*B[i];
+        const ab2 = A[i]*B[i]*B[i];
+        nA[i] = A[i] + (Da*lapA - ab2 + f*(1-A[i]));
+        nB[i] = B[i] + (Db*lapB + ab2 - (k+f)*B[i]);
+        if (nA[i]<0) nA[i]=0; if (nA[i]>1) nA[i]=1;
+        if (nB[i]<0) nB[i]=0; if (nB[i]>1) nB[i]=1;
+      }
+      [A,nA]=[nA,A]; [B,nB]=[nB,B];
+    }
+    for (let i=0; i<N; i++) {
+      const v = A[i];
+      // cream-to-sage color map
+      const r = Math.floor(30 + v*210);
+      const g = Math.floor(30 + v*195);
+      const bl = Math.floor(28 + v*170);
+      img.data[i*4]   = r;
+      img.data[i*4+1] = g;
+      img.data[i*4+2] = bl;
+      img.data[i*4+3] = 255;
+    }
+    ctx.putImageData(img, 0, 0);
+    step++;
+    requestAnimationFrame(tick);
+  }
+  tick();
+}
+
+/* M3 — MYCELIUM NETWORK: growing graph with halos */
+function m3_mycelium() {
+  const canvas = document.getElementById('m3'); if (!canvas) return;
+  const W = canvas.width = canvas.parentElement.offsetWidth || 680;
+  const H = canvas.height = canvas.parentElement.offsetHeight || 380;
+  const ctx = canvas.getContext('2d');
+  const nodes = [{x:W/2, y:H/2, r:3, age:0, parent:-1}];
+  const edges = [];
+  let t = 0;
+
+  function grow() {
+    if (nodes.length < 320 && Math.random() < 0.5) {
+      const parent = nodes[Math.floor(Math.random()*Math.min(nodes.length, 80))];
+      const angle = Math.random()*Math.PI*2;
+      const dist = 18 + Math.random()*30;
+      const nx = parent.x + Math.cos(angle)*dist;
+      const ny = parent.y + Math.sin(angle)*dist;
+      if (nx>10 && nx<W-10 && ny>10 && ny<H-10) {
+        const ni = nodes.length;
+        nodes.push({x:nx, y:ny, r:1+Math.random()*2, age:0, parent:ni-1});
+        edges.push({a: nodes.indexOf(parent), b: ni});
+      }
+    }
+    nodes.forEach(n => n.age++);
+  }
+
+  function draw() {
+    ctx.fillStyle = 'rgba(30,30,28,0.14)';
+    ctx.fillRect(0,0,W,H);
+    // edges
+    edges.forEach(e => {
+      const a = nodes[e.a], b = nodes[e.b];
+      const alpha = Math.min(1, b.age/60) * 0.25;
+      ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y);
+      ctx.strokeStyle = `rgba(154,170,136,${alpha})`;
+      ctx.lineWidth = 0.5;
+      ctx.stroke();
+    });
+    // nodes
+    nodes.forEach(n => {
+      const alpha = Math.min(1, n.age/40);
+      // halo
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r*3, 0, Math.PI*2);
+      ctx.fillStyle = `rgba(200,168,120,${alpha*0.07})`;
+      ctx.fill();
+      // dot
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r, 0, Math.PI*2);
+      ctx.fillStyle = `rgba(200,168,120,${alpha*0.6})`;
+      ctx.fill();
+    });
+    grow();
+    t++;
+    requestAnimationFrame(draw);
+  }
+  draw();
+}
+
+/* M4 — CELLULAR MEMBRANE: flowing Voronoi-like cells */
+function m4_voronoi() {
+  const canvas = document.getElementById('m4'); if (!canvas) return;
+  const W = canvas.width = canvas.parentElement.offsetWidth || 680;
+  const H = canvas.height = canvas.parentElement.offsetHeight || 380;
+  const ctx = canvas.getContext('2d');
+  const SEEDS = 28;
+  const seeds = Array.from({length:SEEDS}, () => ({
+    x: Math.random()*W, y: Math.random()*H,
+    vx: (Math.random()-0.5)*0.4, vy: (Math.random()-0.5)*0.4,
+    hue: 28 + Math.random()*30,
+  }));
+  let t = 0;
+
+  // pre-alloc scanline buffer
+  const RES = 3; // render at 1/RES resolution for performance
+  const rW = Math.floor(W/RES), rH = Math.floor(H/RES);
+  const imgData = ctx.createImageData(rW, rH);
+
+  function draw() {
+    seeds.forEach(s => {
+      s.x += s.vx + Math.sin(t*0.005+s.hue)*0.3;
+      s.y += s.vy + Math.cos(t*0.005+s.hue)*0.3;
+      if (s.x<0||s.x>W) s.vx*=-1;
+      if (s.y<0||s.y>H) s.vy*=-1;
+    });
+
+    for (let py=0; py<rH; py++) {
+      for (let px=0; px<rW; px++) {
+        const wx = px*RES, wy = py*RES;
+        let best = Infinity, second = Infinity;
+        let bestIdx = 0;
+        seeds.forEach((s,i) => {
+          const d = Math.hypot(wx-s.x, wy-s.y);
+          if (d < best) { second=best; best=d; bestIdx=i; }
+          else if (d < second) second=d;
+        });
+        const edge = (second - best);
+        const isEdge = edge < 4;
+        const s = seeds[bestIdx];
+        const idx = (py*rW+px)*4;
+        if (isEdge) {
+          imgData.data[idx]   = 90;
+          imgData.data[idx+1] = 100;
+          imgData.data[idx+2] = 78;
+          imgData.data[idx+3] = 220;
+        } else {
+          const brightness = 0.06 + (edge/80)*0.12;
+          imgData.data[idx]   = Math.floor(30 + brightness*180);
+          imgData.data[idx+1] = Math.floor(28 + brightness*165);
+          imgData.data[idx+2] = Math.floor(22 + brightness*130);
+          imgData.data[idx+3] = 255;
+        }
+      }
+    }
+    ctx.putImageData(imgData, 0, 0);
+    ctx.drawImage(canvas, 0, 0, rW, rH, 0, 0, W, H);
+
+    // overlay subtle highlight dots at seed positions
+    seeds.forEach(s => {
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, 2, 0, Math.PI*2);
+      ctx.fillStyle = 'rgba(200,168,120,0.5)';
+      ctx.fill();
+    });
+
+    t++;
+    requestAnimationFrame(draw);
+  }
+  draw();
+}
+
+/* Preload portfolio thumbs when page loads */
+window.addEventListener('load', () => {
+  buildProjects();
+  setTimeout(initThumbs, 300);
+});
+</script>
+</body>
+</html>
