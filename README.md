@@ -671,7 +671,7 @@ footer {
         <span class="bio-name-last">Selph</span>
       </h1>
       <p class="bio-tagline">
-        Replace this with your tagline — a sentence or two about what you do, who you do it for, and the spirit you bring to the work.
+        Associate Professor of Graphic and Interaction Design. Creative Director with 20+ years of experience.
       </p>
       <div class="bio-actions">
         <button class="btn-primary" onclick="showPage('portfolio')">View my work →</button>
