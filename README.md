@@ -680,7 +680,7 @@ footer {
     </div>
     <div class="bio-right">
       <canvas id="bio-canvas"></canvas>
-      <img src="data:image/jpeg;base64,PORTRAIT_B64" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;z-index:1;" alt="Sheri Flournoy Selph">
+      <img src="Sheri-38.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;z-index:1;" alt="Sheri Flournoy Selph">
     </div>
   </div>
 
