@@ -689,9 +689,9 @@ footer {
       <p class="section-label">About</p>
     </div>
     <div class="about-body">
-      <p>Replace this with your story. Tell the reader who you are, what you care about, and how you found your way to the work you do now. This is your moment to be fully human — skip the jargon.</p>
-      <p>Talk about your process, your obsessions, the kinds of problems that light you up. What do you believe about your craft? What are you trying to <strong>build or express</strong> through your work?</p>
-      <p>Where are you based? What are you working on right now? Give people something real to hold onto — a reason to reach out.</p>
+      <p>I am a Design Educator and Creative Director attempting to capture elusive ideas from deep brain space. After years of designing for Fortune 500's—everything from Casinos to Healthcare, my heart now resides in the education of my brilliant future designers. </p>
+      <p>Areas of expertise include Design Education (Interaction Design, Print Marketing, & Motion Design) + Creative Direction for Non-profit Industries and Government Sector, Travel & Entertainment, Retail Banking, and Automotive.</p>
+      <p>Based at Middle Tennessee State University. Just south of Nashville, Tennessee.</p>
     </div>
   </div>
 
