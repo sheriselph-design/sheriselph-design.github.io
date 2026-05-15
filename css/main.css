@@ -22,7 +22,7 @@
   --border:   rgba(240,232,216,0.08);
   --border2:  rgba(240,232,216,0.15);
   --serif:    'Playfair Display', Georgia, serif;
-  --sans:     'DM Sans', sans-serif;
+  --sans:     'Alegreya Sans', sans-serif;
   --mono:     'DM Mono', monospace;
 }
 
@@ -306,7 +306,8 @@ nav {
 .about-body {
   font-family: var(--sans);
   font-size: 1.05rem;
-  font-weight: 300;
+   font-weight: 400;
+  font-style: normal;
   color: var(--cream2);
   line-height: 1.9;
 }
