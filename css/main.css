@@ -306,8 +306,7 @@ nav {
 .about-body {
   font-family: var(--sans);
   font-size: 1.05rem;
-   font-weight: 400;
-  font-style: normal;
+  font-weight: 300;
   color: var(--cream2);
   line-height: 1.9;
 }
