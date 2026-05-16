@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sheri Flournoy Selph</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@300;400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+  <!-- Custom cursor -->
+  <div id="cursor"></div>
+  <div id="cursor-ring"></div>
+
+  <!-- Botanical SVG background overlay -->
+  <img id="botanical-bg" src="assets/svg/botanical-bg.svg" aria-hidden="true" alt="">
+
+  <!-- ── NAVIGATION ── -->
+  <nav>
+    <a class="nav-logo" onclick="showPage('bio')">Sheri Flournoy Selph</a>
+    <ul class="nav-links">
+      <li><a onclick="showPage('bio')">Bio</a></li>
+      <li><a onclick="showPage('portfolio')">Work</a></li>
+      <li><a onclick="showPage('blog')">Writing</a></li>
+      <li><a onclick="showPage('motion')">Motion</a></li>
+    </ul>
+  </nav>
+
+  <!-- ══════════════════════════════
+       BIO PAGE
+  ══════════════════════════════ -->
+  <section id="bio" class="page active">
+
+    <div class="bio-hero">
+      <div class="bio-left">
+        <p class="bio-eyebrow">Available for projects · 2025</p>
+        <h1 class="bio-name">
+          Sheri
+          <em class="bio-name-second">Flournoy</em>
+          <span class="bio-name-last">Selph</span>
+        </h1>
+        <p class="bio-tagline">
+          Replace this with your tagline — a sentence or two about what you do,
+          who you do it for, and the spirit you bring to the work.
+        </p>
+        <div class="bio-actions">
+          <button class="btn-primary" onclick="showPage('portfolio')">View my work →</button>
+          <button class="btn-secondary" onclick="showPage('blog')">Read the newsletter</button>
+        </div>
+      </div>
+
+      <div class="bio-right">
+        <canvas id="bio-canvas"></canvas>
+        <img
+          src="assets/images/portrait.jpg"
+          alt="Sheri Flournoy Selph"
+        >
+      </div>
+    </div>
+
+    <div class="bio-about">
+      <div>
+        <p class="section-label">About</p>
+      </div>
+      <div class="about-body">
+        <p>Replace this with your story. Tell the reader who you are, what you care about, and how you found your way to the work you do now. This is your moment to be fully human — skip the jargon.</p>
+        <p>Talk about your process, your obsessions, the kinds of problems that light you up. What do you believe about your craft? What are you trying to <strong>build or express</strong> through your work?</p>
+        <p>Where are you based? What are you working on right now? Give people something real to hold onto — a reason to reach out.</p>
+      </div>
+    </div>
+
+    <div class="skills-strip">
+      <div class="skill-cell">
+        <div class="skill-name">Discipline One</div>
+        <div class="skill-sub">Skill · Skill · Skill</div>
+      </div>
+      <div class="skill-cell">
+        <div class="skill-name">Discipline Two</div>
+        <div class="skill-sub">Skill · Skill · Skill</div>
+      </div>
+      <div class="skill-cell">
+        <div class="skill-name">Discipline Three</div>
+        <div class="skill-sub">Skill · Skill · Skill</div>
+      </div>
+      <div class="skill-cell">
+        <div class="skill-name">Discipline Four</div>
+        <div class="skill-sub">Skill · Skill · Skill</div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ══════════════════════════════
+       PORTFOLIO PAGE
+  ══════════════════════════════ -->
+  <section id="portfolio" class="page">
+    <div class="portfolio-wrap">
+      <div class="page-header">
+        <h2 class="page-title">Selected<br><em>work &amp; projects</em></h2>
+        <p class="page-intro">Six projects that best represent the range, depth, and intention behind the work. Replace titles, descriptions, and tags to make these your own.</p>
+      </div>
+      <div class="projects-grid" id="projects-grid"></div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════
+       BLOG / NEWSLETTER PAGE
+  ══════════════════════════════ -->
+  <section id="blog" class="page">
+    <div class="blog-wrap">
+      <div class="page-header">
+        <h2 class="page-title">Writing &amp;<br><em>the newsletter</em></h2>
+        <p class="page-intro">Ideas, process notes, and essays sent monthly. A space to think without the algorithm.</p>
+      </div>
+
+      <div class="newsletter-block">
+        <p class="nl-eyebrow">Monthly dispatch</p>
+        <h3 class="nl-title">Join the <em>letter</em></h3>
+        <p class="nl-desc">Once a month: a personal dispatch on craft, process, and the ideas shaping how I work. No noise. Just honest writing.</p>
+        <div class="nl-form">
+          <input id="nl-email" class="nl-input" type="email" placeholder="your@email.com">
+          <button class="nl-btn" onclick="subscribe()">Subscribe</button>
+        </div>
+        <p class="nl-note" id="nl-msg">No spam. Unsubscribe anytime.</p>
+      </div>
+
+      <div class="posts-grid" id="posts-grid"></div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════
+       MOTION PAGE
+  ══════════════════════════════ -->
+  <section id="motion" class="page">
+    <div class="motion-wrap">
+      <div class="page-header">
+        <h2 class="page-title">Experimental<br><em>motion studies</em></h2>
+        <p class="page-intro">Four coded pieces exploring the boundary between the digital and the organic — systems that breathe, grow, and respond.</p>
+      </div>
+
+      <div class="motion-grid">
+        <div class="motion-card">
+          <div class="motion-canvas-wrap"><canvas id="m1"></canvas></div>
+          <div class="motion-label">
+            <span class="motion-title">Botanical Growth</span>
+            <span class="motion-meta">01 — generative</span>
+          </div>
+        </div>
+        <div class="motion-card">
+          <div class="motion-canvas-wrap"><canvas id="m2"></canvas></div>
+          <div class="motion-label">
+            <span class="motion-title">Petal Diffusion</span>
+            <span class="motion-meta">02 — reaction–diffusion</span>
+          </div>
+        </div>
+        <div class="motion-card">
+          <div class="motion-canvas-wrap"><canvas id="m3"></canvas></div>
+          <div class="motion-label">
+            <span class="motion-title">Mycelium Network</span>
+            <span class="motion-meta">03 — particle graph</span>
+          </div>
+        </div>
+        <div class="motion-card">
+          <div class="motion-canvas-wrap"><canvas id="m4"></canvas></div>
+          <div class="motion-label">
+            <span class="motion-title">Cellular Membrane</span>
+            <span class="motion-meta">04 — voronoi flow</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <span class="footer-name">Sheri Flournoy Selph</span>
+    <span class="footer-copy">© 2025 — All rights reserved</span>
+    <div class="footer-links">
+      <a href="#">Instagram</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">Twitter</a>
+      <a href="#">Email</a>
+    </div>
+  </footer>
+
+  <!-- Scripts — order matters: nav first, then feature modules -->
+  <script src="js/nav.js"></script>
+  <script src="js/bio.js"></script>
+  <script src="js/portfolio.js"></script>
+  <script src="js/blog.js"></script>
+  <script src="js/motion.js"></script>
+
+</body>
+</html>
