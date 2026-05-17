@@ -662,7 +662,7 @@ footer {
   .nav-links a { font-size: 0.58rem; letter-spacing: 0.12em; }
 
   .bio-left { padding: 6rem 1.2rem 2.5rem; }
-  .bio-right { height: 260px; }
+  .bio-right { height: 460px; }
   .bio-tagline { font-size: 0.95rem; }
   .bio-actions { flex-direction: column; }
   .btn-primary, .btn-secondary { justify-content: center; }
